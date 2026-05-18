@@ -1,3 +1,4 @@
+import math
 import app
 
 
@@ -32,8 +33,24 @@ class Calculator:
         self.check_types(x, y)
         return x ** y
 
+    def square_root(self, x):
+        self.check_type(x)
+        if x < 0:
+            raise TypeError("Square root of a negative number is not possible")
+        return math.sqrt(x)
+
+    def log10(self, x):
+        self.check_type(x)
+        if x <= 0:
+            raise TypeError("Logarithm of non-positive numbers is not possible")
+        return math.log10(x)
+
     def check_types(self, x, y):
-        if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+        self.check_type(x)
+        self.check_type(y)
+
+    def check_type(self, x):
+        if not isinstance(x, (int, float)):
             raise TypeError("Parameters must be numbers")
 
 
